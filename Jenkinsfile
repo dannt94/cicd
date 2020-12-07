@@ -9,7 +9,7 @@ node {
       srcTag: 'latest',
       destinationNamespace: 'dannt11',
       destStream: 'hellopythonapp',
-      destTag: 'prod'
+      destTag: 'latest'
     openshiftVerifyDeployment depCfg: 'hellopythonapp',
       namespace: 'dannt11'
   }
