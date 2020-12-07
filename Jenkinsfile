@@ -1,15 +1,12 @@
 node {
-  stage('approval (production)') {
-    input message: 'Approve for production?',
+  stage('approval (test)') {
+    input message: 'Approve for testing?',
       id: 'approval'
   }
-  stage('deploy to production') {
-    openshiftTag srcStream: 'hellopythonapp',
+  stage('build & deploy') {
+    openshiftBuild bldCfg: 'hellopythonapp',
       namespace: 'dannt11',
-      srcTag: 'latest',
-      destinationNamespace: 'dannt11',
-      destStream: 'hellopythonapp',
-      destTag: 'latest'
+      showBuildLogs: 'true'
     openshiftVerifyDeployment depCfg: 'hellopythonapp',
       namespace: 'dannt11'
   }
